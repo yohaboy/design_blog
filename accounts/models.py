@@ -22,7 +22,7 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     username = models.CharField(max_length=15, unique=True)
     email = models.EmailField(unique=True)
-    profile = models.FileField(upload_to="profiles/", blank=True, null=True)
+    profile = models.FileField(upload_to="profiles/", blank=True, null=True ,default='profiles/Screenshot_from_2024-11-10_23-11-42.png')
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "username"

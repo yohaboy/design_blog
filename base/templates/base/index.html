@@ -13,14 +13,33 @@
         <span class=" pt-[2px] flex flex-col w-[120px] h-[50px] text-center text-[20px] m-2">
             <img src="{% static '../static/images/logo.png' %}" class="w-16 h-16">
         </span>
-        <span class="hidden sm:flex items-center mr-6 gap-6 md:gap-10">
+        <span class="hidden sm:flex items-start mt-6 mr-6 gap-2 md:gap-6">
             <span class="menu">Home</span>
             <span class="menu">About</span>
             <span class="menu">Contact</span>
             <span class="menu">Jobs</span>
             <span class="menu">Top</span>
         </span>
-        <button class="bg-[#0D0C22] text-white font-bold flex flex-col h-[50px] m-2 w-[120px] border-2 p-2 px-4 rounded-full">Log in</button>
+
+        <span class="flex items-start mt-2 mx-4  md:flex-row">
+            {% if request.user.is_authenticated %}
+
+                {% if request.user.profile %}
+                    <div class="flex flex-col gap-2 shadow-md w-[100px] rounded-xl items-center p-2">
+                        <img src="{{ request.user.profile.url }}" class="w-12 h-12 rounded-full">
+                        <div class="font-extrabold rounded pr-2 uppercase">{{ request.user.username }}</div>
+                    </div>
+                {% else %}
+                    <button class="hover:cursor-pointer bg-[#0D0C22] uppercase text-white font-bold flex gap-1 justify-center h-[60px] m-2 w-[100px] border-2 p-2 px-2 rounded-full">
+                        {{ request.user.username }}
+                    </button>
+                {% endif %}
+
+            {% else %}
+                <a href="{% url 'register' %}"><button type="submit" class="hover:cursor-pointer bg-[#0D0C22] text-white font-bold flex flex-col h-[50px] m-2 w-[100px] border-2 p-2 px-4 rounded-full">Sign up</button></a>
+                <a href="{% url 'login' %}"><button type="submit" class="hover:cursor-pointer bg-[#0D0C22] text-white font-bold flex flex-col h-[50px] m-2 w-[85px] ml-3 border-2 p-2 px-4 rounded-full">Log in</button></a>
+            {% endif %}
+        </span>
     </div>
     
     <h1 class="text-[24px] text-center p-6 pb-2 font-bold">Discover the world’s top designers</h1>
@@ -47,14 +66,15 @@
 
     <div class="grid grid-cols-1 mt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" >
     <!-- POST 1 -->
+    {% for post in posts %}
         <div class="grid grid-row-2">
             <div class="relative flex flex-col w-ful mx-4 mt-5 rounded-lg pt-2 h-[300px] shadow-lg shadow-purple-400 overflow-hidden ">
-                <img class="absolute top-0 left-0 w-full h-[300px] object-cover object-center" src="{% static '../static/images/naruto.png' %}">
+                <img class="absolute top-0 left-0 w-full h-[300px] object-cover object-center" src="{{ post.postImage.url }}">
             </div>
             <div class=" flex justify-between items-center mx-4 mt-1 rounded-lg h-[50px] shadow-lg shadow-purple-400">
                 <div class="flex gap-2">
-                    <span class="m-[4px]"><img src="{% static '../static/images/bot.png' %}" class="rounded-full w-10 h-10"></span>
-                    <span class="mt-2 font-bold text-[18px]  rounded-2xl text-center px-1 ">Minato Namikaze</span>
+                    <span class="m-[4px]"><img src="{{ post.user.profile.url }}" class="rounded-full w-10 h-10"></span>
+                    <span class="mt-2 font-bold text-[18px]  rounded-2xl text-center px-1 ">{{ post.user.username }}</span>
                 </div>
                 <div class="flex gap-1">
                     <span class="m-[4px]"><img src="{% static '../static/images/like.png' %}" class="rounded-full w-10 h-10"></span>
@@ -62,6 +82,7 @@
                 </div>
             </div>
         </div>
+    {% endfor %}
     <!-- Post -2 -->
     </div>
 </body>
