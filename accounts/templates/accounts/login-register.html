@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static '../static/dist/output.css' %}">
+    <title>Register</title>
 </head>
 <body>
-    {{ form.profile }}
+    <div class="flex justify-center h-screen">
+        <div class="rounded-xl p-10 m-5 mt-20 max-h-[500px] h-2/5 w-full max-w-[400px]">
+            <form action="" method="post" class="rounded-xl flex flex-col justify-center bg-gray-900 shadow-lg  p-[30px] ">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="rounded shadow p-2 my-2 text-white" >
+                        {{ field.label }}
+                    </div>
+                    <div class="p-2 outline-0 border-0 bg-gray-200 rounded">
+                        {{ field }}
+                    </div>
+                    {% if field.errors %}
+                        <div class="text-red-600 text-sm mt-1">
+                            {% for error in field.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                     {% endif %}
+                {% endfor %}
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Submit</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

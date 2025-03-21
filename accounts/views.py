@@ -12,7 +12,7 @@ class RegsiterUser(CreateView):
     model = User
     template_name = 'accounts/login-register.html'
     form_class = RegisterForm
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('home')
     
     def form_valid(self, form):
         user = form.save()
