@@ -1,9 +1,7 @@
 from django.db import models
+from accounts.models import User
 
-class User(models.Model):
-    username = models.CharField(max_length=15)
-    password = models.CharField(max_length=50)
-    email = models.EmailField()
-
-class Post(models.Model):
-    name = models.CharField(max_length=15)
+# class Post(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     postImage = models.ImageField()
+#     category = models.Choices()
