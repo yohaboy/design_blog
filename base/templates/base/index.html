@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '../static/dist/output.css' %}">
     <title>Test</title>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {    
+            document.querySelectorAll('.trend').forEach(button => {
+                button.addEventListener('click', () => {
+                    const filterValue = button.getAttribute('data-filter');
+                    window.location.href = `?filter=${encodeURIComponent(filterValue)}`;
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 <!-- TOP BAR -->
@@ -56,12 +67,12 @@
     </div>
     
     <div class="flex flex-row flex-wrap gap-2 sm:flex-row sm:flex-wrap justify-center">
-        <button class="trend">landing page</button>
-        <button class="trend">e-commerce</button>
-        <button class="trend">mobile app</button>
-        <button class="trend">logo design</button>
-        <button class="trend">dashboard</button>
-        <button class="trend">icons</button>
+        <button class="trend" data-filter="landing">landing page</button>
+        <button class="trend" data-filter="e-commerce">e-commerce</button>
+        <button class="trend" data-filter="mobile">mobile app</button>
+        <button class="trend" data-filter="logo">logo design</button>
+        <button class="trend" data-filter="dashboard">dashboard</button>
+        <button class="trend" data-filter="icons">icons</button>
     </div>
     
 <!-- POSTS CONTAINER -->

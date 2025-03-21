@@ -10,14 +10,19 @@ def home(request):
     results = []
     posts = Post.objects.all()
     user_exists = User.objects.filter(username=request.user.username)
+
+    filter_value = request.GET.get('filter')
+
+    if filter_value:
+        posts = posts.filter(category__icontains=filter_value)
     
     if 'search' in request.GET:
         query = request.GET['search']
         results = Post.objects.filter(Q(user__username__icontains=query)| Q(category__icontains=query))
         if not results :
             posts = []
-    if results:
         posts = results
+
     context = {
         'user_exists':user_exists,
         'posts':posts
