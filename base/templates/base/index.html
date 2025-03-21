@@ -9,7 +9,7 @@
 </head>
 <body>
 <!-- TOP BAR -->
-    <div class="flex justify-between text-black mb-5">
+    <div class="flex justify-between text-black mb-3">
         <span class=" pt-[2px] flex flex-col w-[120px] h-[50px] text-center text-[20px] m-2">
             <img src="{% static '../static/images/logo.png' %}" class="w-16 h-16">
         </span>
@@ -47,10 +47,12 @@
 
 <!-- Search bar -->
     <div class="flex justify-center flex-wrap">
-        <div class="flex justify-between items-center w-[320px] h-[55px] m-2 ml-4 rounded-full bg-gray-200">
-            <span class="ml-4" ><input class="text-violet-700 outline-0" type="text" placeholder="what are you looking for?"></span>
-            <span class="mr-2"><img src="{% static '../static/images/search.png' %}" class="w-10 h-10"></span>
-        </div>
+        <form method="GET" action="{% url 'home' %}">
+            <div class="flex justify-between items-center w-[320px] h-[55px] m-2 ml-4 rounded-full bg-gray-200">
+                <span class="ml-4" ><input class="text-violet-700 outline-0" type="text" placeholder="what are you looking for?" name="search"></span>
+                <span class="mr-2"><img src="{% static '../static/images/search.png' %}" class="w-10 h-10"></span>
+            </div>
+        </form>
     </div>
     
     <div class="flex flex-row flex-wrap gap-2 sm:flex-row sm:flex-wrap justify-center">
@@ -65,7 +67,7 @@
 <!-- POSTS CONTAINER -->
 
     <div class="grid grid-cols-1 mt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" >
-    <!-- POST 1 -->
+    <!-- POSTS -->
     {% for post in posts %}
         <div class="grid grid-row-2">
             <div class="relative flex flex-col w-ful mx-4 mt-5 rounded-lg pt-2 h-[300px] shadow-lg shadow-purple-400 overflow-hidden ">
@@ -83,7 +85,6 @@
             </div>
         </div>
     {% endfor %}
-    <!-- Post -2 -->
     </div>
 </body>
 </html>
