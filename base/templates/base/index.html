@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '../static/dist/output.css' %}">
+    <title>Test</title>
+</head>
+<body>
+<!-- TOP BAR -->
+    <div class="flex justify-between text-black mb-5">
+        <span class=" pt-[2px] flex flex-col w-[120px] h-[50px] text-center text-[20px] m-2">
+            <img src="{% static '../static/images/logo.png' %}" class="w-16 h-16">
+        </span>
+        <span class="hidden sm:flex items-center mr-6 gap-6 md:gap-10">
+            <span class="menu">Home</span>
+            <span class="menu">About</span>
+            <span class="menu">Contact</span>
+            <span class="menu">Jobs</span>
+            <span class="menu">Top</span>
+        </span>
+        <button class="bg-[#0D0C22] text-white font-bold flex flex-col h-[50px] m-2 w-[120px] border-2 p-2 px-4 rounded-full">Log in</button>
+    </div>
+    
+    <h1 class="text-[24px] text-center p-6 pb-2 font-bold">Discover the world’s top designers</h1>
+    <p class="text-center p-4">Explore work from the most talented designers ready to take on your next project</p>
+
+<!-- Search bar -->
+    <div class="flex justify-center flex-wrap">
+        <div class="flex justify-between items-center w-[320px] h-[55px] m-2 ml-4 rounded-full bg-gray-200">
+            <span class="ml-4" ><input class="text-violet-700 outline-0" type="text" placeholder="what are you looking for?"></span>
+            <span class="mr-2"><img src="{% static '../static/images/search.png' %}" class="w-10 h-10"></span>
+        </div>
+    </div>
+    
+    <div class="flex flex-row flex-wrap gap-2 sm:flex-row sm:flex-wrap justify-center">
+        <button class="trend">landing page</button>
+        <button class="trend">e-commerce</button>
+        <button class="trend">mobile app</button>
+        <button class="trend">logo design</button>
+        <button class="trend">dashboard</button>
+        <button class="trend">icons</button>
+    </div>
+    
+<!-- POSTS CONTAINER -->
+
+    <div class="grid grid-cols-1 mt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" >
+    <!-- POST 1 -->
+        <div class="grid grid-row-2">
+            <div class="relative flex flex-col w-ful mx-4 mt-5 rounded-lg pt-2 h-[300px] shadow-lg shadow-purple-400 overflow-hidden ">
+                <img class="absolute top-0 left-0 w-full h-[300px] object-cover object-center" src="{% static '../static/images/naruto.png' %}">
+            </div>
+            <div class=" flex justify-between items-center mx-4 mt-1 rounded-lg h-[50px] shadow-lg shadow-purple-400">
+                <div class="flex gap-2">
+                    <span class="m-[4px]"><img src="{% static '../static/images/bot.png' %}" class="rounded-full w-10 h-10"></span>
+                    <span class="mt-2 font-bold text-[18px]  rounded-2xl text-center px-1 ">Minato Namikaze</span>
+                </div>
+                <div class="flex gap-1">
+                    <span class="m-[4px]"><img src="{% static '../static/images/like.png' %}" class="rounded-full w-10 h-10"></span>
+                    <span class="m-[4px]"><img src="{% static '../static/images/views.png' %}" class="rounded w-10 h-10"></span>
+                </div>
+            </div>
+        </div>
+    <!-- Post -2 -->
+    </div>
+</body>
+</html>
+
+
+
+
+
