@@ -14,6 +14,8 @@ def home(request):
     if 'search' in request.GET:
         query = request.GET['search']
         results = Post.objects.filter(Q(user__username__icontains=query)| Q(category__icontains=query))
+        if not results :
+            posts = []
     if results:
         posts = results
     context = {
